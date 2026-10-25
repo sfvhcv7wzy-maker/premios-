@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<title>Los Premios de la Cumpleañera</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700;1,900&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&display=swap">
+<style>
+:root{--blk:#0a0a0e;--red:#a11228;--gold:#e3c06b;--gold2:#b8892f;--cream:#f5ecd7;--ink:#f6efe0;
+  color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{height:100%;scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:border-box}
+body{height:100%;margin:0;overflow:hidden;color:var(--ink);font-family:'Cormorant Garamond',Georgia,'Times New Roman',serif;
+  background:var(--blk) radial-gradient(70% 45% at 50% 0%,rgba(227,192,107,.16),transparent 70%),radial-gradient(90% 50% at 50% 100%,rgba(161,18,40,.28),transparent 70%)}
+.beam{position:fixed;bottom:-6%;width:34vmin;height:150vmax;margin-left:-17vmin;background:linear-gradient(to top,rgba(255,243,210,.2),transparent 80%);transform-origin:50% 100%;clip-path:polygon(46% 100%,54% 100%,100% 0,0 0);animation:sway 8s ease-in-out infinite alternate;pointer-events:none}
+.b1{left:18%;--a:-24deg;--b:-6deg}.b2{left:82%;--a:24deg;--b:6deg;animation-delay:-4s}
+@keyframes sway{from{transform:rotate(var(--a))}to{transform:rotate(var(--b))}}
+.cur{position:fixed;top:0;bottom:0;width:51%;z-index:5;background:repeating-linear-gradient(90deg,#5a0814 0,#a11228 14px,#7a0c1b 28px,#4d0610 42px);box-shadow:inset 0 -90px 120px rgba(0,0,0,.5);transition:transform 1.7s cubic-bezier(.7,0,.2,1)}
+.cur.l{left:0;border-right:3px solid var(--gold)}.cur.r{right:0;border-left:3px solid var(--gold)}
+.open .cur.l{transform:translateX(-91%)}.open .cur.r{transform:translateX(91%)}
+.val{position:fixed;top:0;left:0;right:0;height:calc(env(safe-area-inset-top,0px) + 22px);z-index:6;background:linear-gradient(#4d0610,#8f0f1f);border-bottom:5px double var(--gold)}
+.carpet{position:fixed;bottom:0;left:50%;width:min(560px,100%);height:64px;transform:translateX(-50%);z-index:4;background:linear-gradient(#a11228,#650a17);clip-path:polygon(10% 0,90% 0,100% 100%,0 100%);border-top:2px solid var(--gold)}
+.scr{position:fixed;inset:0;z-index:10;display:none;flex-direction:column;align-items:center;justify-content:center;gap:18px;text-align:center;overflow:auto;padding:calc(env(safe-area-inset-top,0px) + 40px) 22px calc(env(safe-area-inset-bottom,0px) + 74px)}
+.scr.on{display:flex;animation:fade .9s ease both}
+@keyframes fade{from{opacity:0;transform:translateY(10px)}}
+.disp{font-family:'Playfair Display',Georgia,serif;font-style:italic;font-weight:900}
+.marq{position:relative;padding:34px 22px;max-width:420px;background:linear-gradient(180deg,#14141a,#050507);border:2px solid var(--gold);border-radius:6px;box-shadow:0 20px 60px rgba(0,0,0,.7)}
+.marq::before{content:"";position:absolute;inset:-14px;border:8px dotted #ffe9a8;border-radius:12px;animation:blink 1.4s steps(2) infinite;pointer-events:none}
+@keyframes blink{50%{opacity:.35}}
+.star{color:var(--gold);font-size:1.4rem;letter-spacing:.4em}
+.pres{margin:6px 0;font-style:italic;font-size:1.25rem;color:var(--cream)}
+h1{margin:6px 0 10px;font-size:clamp(2.2rem,10vw,3.1rem);line-height:1.02;color:#fff}
+.ed{margin:0;font-size:1.15rem;color:var(--gold)}
+.btn{all:unset;box-sizing:border-box;cursor:pointer;padding:13px 28px;border-radius:99px;font-family:'Playfair Display',Georgia,serif;font-style:italic;font-weight:700;font-size:1.1rem;color:#1c1203;background:linear-gradient(135deg,#fbefc4,#d6ab4a);box-shadow:0 8px 26px rgba(227,192,107,.35),0 0 0 2px #7a560f inset}
+.btn:focus-visible{outline:2px solid #fff;outline-offset:3px}
+.letter{position:relative;width:min(100%,430px);padding:40px 28px 30px;color:#2b1a0b;background:repeating-linear-gradient(0deg,rgba(120,90,40,.04) 0 2px,transparent 2px 5px),linear-gradient(160deg,#f8f0db,#ead9b2);border:2px dashed var(--red);outline:2px solid var(--gold2);outline-offset:-11px;border-radius:3px;box-shadow:0 22px 56px rgba(0,0,0,.7)}
+.cn{position:absolute;width:46px;height:46px}.tl{top:7px;left:7px}.tr{top:7px;right:7px;transform:scaleX(-1)}.bl{bottom:7px;left:7px;transform:scaleY(-1)}.br{bottom:7px;right:7px;transform:scale(-1)}
+.letter .acad{margin:0;font-size:.95rem;letter-spacing:.14em;text-transform:uppercase;color:#7a560f;font-weight:600}
+.letter h2{margin:6px 0 4px;font-size:1.5rem;color:#2b1a0b}
+.para{margin:12px 0;font-size:1.55rem;line-height:1.1;color:var(--red)}
+.letter p{margin:0 0 10px;font-size:1.18rem;line-height:1.4}
+.sig{font-style:italic;color:#5b4020}
+.nom{margin:0;font-size:clamp(2rem,9vw,2.8rem);line-height:1.05;color:#fff;text-shadow:0 2px 14px rgba(227,192,107,.4);min-height:2.2em;display:grid;place-items:center}
+.nm{margin:0;font-style:italic;font-size:1.1rem;color:var(--gold)}
+.cnt{margin:0;font-size:1.05rem;color:var(--cream);opacity:.8}
+.env{position:relative;width:240px;height:150px;margin-top:80px;background:#101015;border-radius:6px;box-shadow:0 18px 40px rgba(0,0,0,.6)}
+.flap{position:absolute;top:0;left:0;width:0;height:0;border-left:120px solid transparent;border-right:120px solid transparent;border-top:92px solid var(--red);transform-origin:top;transition:transform .6s;z-index:3}
+.env.open .flap{transform:rotateX(180deg);z-index:0}
+.front{position:absolute;inset:0;z-index:2;border-radius:6px;background:linear-gradient(160deg,#23232b,#0b0b10);border:1px solid var(--gold2);clip-path:polygon(0 0,50% 56%,100% 0,100% 100%,0 100%)}
+.seal{position:absolute;left:50%;top:70px;width:28px;height:28px;margin-left:-14px;border-radius:50%;z-index:4;background:radial-gradient(circle at 35% 30%,#fff1b0,#c9962b);box-shadow:0 2px 6px rgba(0,0,0,.5);transition:opacity .3s}
+.env.open .seal{opacity:0}
+.paper{position:absolute;left:14px;right:14px;top:16px;height:122px;z-index:1;background:var(--cream);color:#2b1a0b;border-radius:4px;display:grid;place-content:center;gap:2px;padding:0 8px;transition:transform .7s ease .35s}
+.env.open .paper{transform:translateY(-98px)}
+.paper small{font-style:italic;font-size:1.05rem}.paper b{font-family:'Playfair Display',Georgia,serif;font-size:1.35rem;line-height:1.1}
+.sp{position:fixed;width:7px;height:7px;margin:-3px 0 0 -3px;border-radius:50%;background:#ffe9a8;box-shadow:0 0 8px 2px rgba(255,233,168,.8);pointer-events:none;z-index:30}
+.cf{position:fixed;top:-12px;width:8px;height:14px;pointer-events:none;z-index:30}
+#fin{gap:10px}
+.rays{position:absolute;left:50%;top:44%;width:150vmax;height:150vmax;margin:-75vmax 0 0 -75vmax;z-index:-1;background:repeating-conic-gradient(rgba(255,225,140,.2) 0 7deg,transparent 7deg 18deg);-webkit-mask:radial-gradient(circle,#000,transparent 62%);mask:radial-gradient(circle,#000,transparent 62%);animation:rot 60s linear infinite}
+@keyframes rot{to{transform:rotate(360deg)}}
+.tro{width:min(56vw,220px);height:auto;filter:drop-shadow(0 12px 30px rgba(227,192,107,.55));animation:rise 1.6s cubic-bezier(.2,.8,.2,1) both .3s}
+@keyframes rise{from{opacity:0;transform:translateY(90px) scale(.7)}}
+.plate{padding:12px 20px;border-radius:4px;background:linear-gradient(180deg,#f3dc8e,#b8892f 55%,#e9cd7a);color:#2a1a02;border:1px solid #6e4c0c;box-shadow:0 8px 24px rgba(0,0,0,.6);animation:fade 1s ease both 1.6s}
+.plate b{display:block;font-family:'Playfair Display',Georgia,serif;font-size:1.25rem;letter-spacing:.06em;text-transform:uppercase}
+.plate span{display:block;font-size:1.15rem;font-weight:600;line-height:1.2}
+.plate i{display:block;font-size:.95rem}
+.hd{margin:0;font-size:1.25rem;color:var(--cream);animation:fade 1s ease both 1s}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="cn" viewBox="0 0 46 46"><path d="M4 42 Q4 4 42 4" fill="none" stroke="#b8892f" stroke-width="1.6" stroke-dasharray="3 2"/><path d="M4 31 Q4 11 31 4" fill="none" stroke="#a11228" stroke-width="1.6" stroke-dasharray="2 2"/><circle cx="11" cy="11" r="3.6" fill="#a11228"/><circle cx="11" cy="5.6" r="2.2" fill="#b8892f"/><circle cx="11" cy="16.4" r="2.2" fill="#b8892f"/><circle cx="5.6" cy="11" r="2.2" fill="#b8892f"/><circle cx="16.4" cy="11" r="2.2" fill="#b8892f"/><circle cx="11" cy="11" r="1.4" fill="#fff4d9"/></symbol>
+<linearGradient id="g" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#8a6212"/><stop offset=".22" stop-color="#f6dd7c"/><stop offset=".42" stop-color="#fff3b8"/><stop offset=".6" stop-color="#d9a92f"/><stop offset=".85" stop-color="#f1c84b"/><stop offset="1" stop-color="#7a560f"/></linearGradient>
+<linearGradient id="bk" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#2b2b33"/><stop offset="1" stop-color="#050507"/></linearGradient>
+</defs></svg>
+<div class="beam b1"></div><div class="beam b2"></div>
+<div class="cur l"></div><div class="cur r"></div><div class="val"></div><div class="carpet"></div>
+
+<section class="scr on" id="intro">
+  <div class="marq">
+    <div class="star">★ ★ ★</div>
+    <p class="pres">La Academia del Universo presenta</p>
+    <h1 class="disp">Los Premios de la Cumpleañera</h1>
+    <p class="ed">Edición XIX · 25 de octubre de 2026</p>
+  </div>
+  <button class="btn" id="b1">Abrir el telón</button>
+</section>
+
+<section class="scr" id="letter">
+  <article class="letter">
+    <svg class="cn tl"><use href="#cn"/></svg><svg class="cn tr"><use href="#cn"/></svg><svg class="cn bl"><use href="#cn"/></svg><svg class="cn br"><use href="#cn"/></svg>
+    <p class="acad">La Academia del Universo</p>
+    <h2 class="disp">Comunicado de nominación</h2>
+    <div class="star" style="font-size:1rem">★ ★ ★</div>
+    <p class="para disp">Para Lesly Chanel Puntiel Mejía</p>
+    <p>Con profunda admiración, tenemos el honor de comunicarle que ha sido nominada en veintinueve categorías de la Gala Anual de la Cumpleañera, celebrada en su honor el 25 de octubre de 2026.</p>
+    <p>Tras una deliberación larga y unánime, el comité la considera la única candidata digna de cada uno de los premios.</p>
+    <p>Se solicita su presencia en la ceremonia, con la elegancia y la sonrisa que la distinguen. La alfombra roja ya está tendida.</p>
+    <p class="sig">Con la más alta consideración,<br>La Academia del Universo<br>Testigo de honor: la Luna</p>
+  </article>
+  <button class="btn" id="b2">Entrar a la ceremonia</button>
+</section>
+
+<section class="scr" id="gala" aria-live="polite">
+  <p class="cnt" id="cnt"></p>
+  <p class="nom disp" id="nom"></p>
+  <p class="nm">Nominada: Lesly Chanel Puntiel Mejía</p>
+  <div class="env" id="env"><div class="paper"><small id="lead">la ganadora es</small><b>Lesly Chanel Puntiel Mejía</b></div><div class="front"></div><div class="flap"></div><div class="seal"></div></div>
+  <button class="btn" id="act">Abrir el sobre</button>
+</section>
+
+<section class="scr" id="fin">
+  <div class="rays"></div>
+  <p class="hd">Y el gran premio de la noche es para…</p>
+  <svg class="tro" viewBox="0 0 200 300" aria-label="Trofeo dorado">
+    <ellipse cx="100" cy="285" rx="70" ry="8" fill="rgba(0,0,0,.5)"/>
+    <rect x="46" y="256" width="108" height="26" rx="3" fill="url(#bk)" stroke="#b8892f"/><rect x="58" y="262" width="84" height="14" rx="2" fill="url(#g)"/>
+    <path d="M70 256 L130 256 L124 240 L76 240 Z" fill="url(#g)"/>
+    <path d="M86 240 C92 222 90 214 90 200 L110 200 C110 214 108 222 114 240 Z" fill="url(#g)"/>
+    <ellipse cx="100" cy="198" rx="19" ry="6" fill="url(#g)"/><ellipse cx="100" cy="206" rx="12" ry="4" fill="#8a6212"/>
+    <path d="M62 96 C58 104 54 112 56 126 C56 128 56 128 54 128 C36 128 30 108 42 100 C48 96 56 98 62 102" fill="none" stroke="url(#g)" stroke-width="7" stroke-linecap="round"/>
+    <path d="M138 96 C142 104 146 112 144 126 C144 128 144 128 146 128 C164 128 170 108 158 100 C152 96 144 98 138 102" fill="none" stroke="url(#g)" stroke-width="7" stroke-linecap="round"/>
+    <path d="M58 90 L142 90 C142 150 124 190 100 196 C76 190 58 150 58 90 Z" fill="url(#g)"/>
+    <ellipse cx="100" cy="90" rx="42" ry="9" fill="#fff0a8" stroke="#b8892f" stroke-width="2"/><ellipse cx="100" cy="91" rx="36" ry="6" fill="#8a6212"/>
+    <path d="M70 100 C68 140 78 168 92 184" fill="none" stroke="#fff" stroke-opacity=".55" stroke-width="5" stroke-linecap="round"/>
+    <path d="M120 110 C122 134 118 154 112 168" fill="none" stroke="#fff" stroke-opacity=".25" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="100" cy="140" r="17" fill="none" stroke="#7a560f" stroke-width="2"/><polygon points="100,128 103,136 112,136 105,141 108,150 100,145 92,150 95,141 88,136 97,136" fill="#7a560f"/>
+    <polygon points="100,22 107,41 127,41 111,53 117,72 100,61 83,72 89,53 73,41 93,41" fill="url(#g)" stroke="#fff3b8" stroke-width="1"/>
+    <path d="M86 78 L114 78 L108 90 L92 90 Z" fill="url(#g)"/>
+  </svg>
+  <div class="plate"><b>Mejor Cumpleañera</b><span>para Lesly Chanel Puntiel Mejía</span><i>Edición XIX · 25 de octubre de 2026</i></div>
+  <button class="btn" id="again" style="margin-top:6px">Volver a ver la ceremonia</button>
+</section>
+
+<script>
+var C=["Mejor voz","Mejor compañía","Mejor oyente","Más creativa","Mejor conversadora","Más admirable","Mejores palabras","Más espontánea","Más paciente","Más sabia","Más soñadora","Más auténtica","Cara de portada","Mejor estilo","Más tierna","La mejor todóloga","Españoleta tía","Mejor gusto musical","Mente más brillante","Mejor doctora","Mejor sonrisa","Ojitos más preciosos","Lunares más lindos","Persona más graciosa","Mejor risa","Más buena gente","Más leal","Premio del jurado","Cumpleañera del año"];
+var N=C.length,i=0,opened=false,$=function(x){return document.getElementById(x)},q=matchMedia('(prefers-reduced-motion: reduce)').matches;
+function go(id){[].forEach.call(document.querySelectorAll('.scr'),function(s){s.classList.toggle('on',s.id===id)})}
+function show(){
+  opened=false;$('env').classList.remove('open');
+  $('nom').textContent=C[i];$('cnt').textContent='Premio '+(i+1)+' de '+N;
+  $('lead').textContent=i===N-1?'la ganadora, por unanimidad, es':'la ganadora es';
+  $('act').textContent='Abrir el sobre';
+}
+function burst(){
+  if(q)return;var r=$('env').getBoundingClientRect(),cx=r.left+r.width/2,cy=r.top;
+  for(var k=0;k<18;k++){(function(){
+    var s=document.createElement('i');s.className='sp';s.style.left=cx+'px';s.style.top=cy+'px';document.body.appendChild(s);
+    var a=Math.random()*6.283,d=70+Math.random()*110;
+    s.animate([{transform:'translate(0,0) scale(1)',opacity:1},{transform:'translate('+Math.cos(a)*d+'px,'+(Math.sin(a)*d-50)+'px) scale(.2)',opacity:0}],{duration:900+Math.random()*600,easing:'ease-out'}).onfinish=function(){s.remove()};
+  })()}
+}
+function confetti(){
+  if(q)return;var col=['#e3c06b','#a11228','#ffffff','#f5ecd7'];
+  for(var k=0;k<70;k++){(function(){
+    var c=document.createElement('i');c.className='cf';c.style.left=Math.random()*100+'vw';c.style.background=col[k%4];document.body.appendChild(c);
+    var x=(Math.random()-.5)*160;
+    c.animate([{transform:'translate(0,0) rotate(0)',opacity:1},{transform:'translate('+x+'px,'+(innerHeight+40)+'px) rotate('+(Math.random()*900)+'deg)',opacity:.9}],{duration:3200+Math.random()*3200,delay:Math.random()*1400,easing:'ease-in'}).onfinish=function(){c.remove()};
+  })()}
+}
+$('b1').onclick=function(){document.body.classList.add('open');setTimeout(function(){go('letter')},1100)};
+$('b2').onclick=function(){i=0;show();go('gala')};
+$('act').onclick=function(){
+  if(!opened){opened=true;$('env').classList.add('open');burst();$('act').textContent=i===N-1?'Ver el gran premio':'Siguiente premio';return}
+  if(i===N-1){go('fin');confetti();return}
+  i++;show();
+};
+$('again').onclick=function(){i=0;show();go('gala')};
+show();
+</script>
+</body>
+</html>
